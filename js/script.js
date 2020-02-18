@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+
 const video = document.getElementById('video');
 const play = document.getElementById('play');
 const stop = document.getElementById('stop');
@@ -6,12 +8,20 @@ const timestamp = document.getElementById('timestamp');
 
 // Play & pause video
 function toggleVideoStatus() {
-    return true;
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
 }
 
 // Update play/pause icon
 function updatePlayIcon() {
-    return true;
+    if (video.paused) {
+        play.innerHTML = '<i class="fa fa-play fa-2x"></i>';
+    } else {
+        play.innerHTML = '<i class="fa fa-pause fa-2x"></i>';
+    }
 }
 
 // Update progress & timestamp
@@ -27,7 +37,8 @@ function setVideoProgress() {
 
 // Stop Video
 function stopVideo() {
-    return true;
+    video.currentTime = 0;
+    video.pause();
 }
 
 // Event listeners
