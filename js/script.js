@@ -1,11 +1,11 @@
-// https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
-// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs
-
 const video = document.getElementById('video');
+console.log(video);
 const play = document.getElementById('play');
 const stop = document.getElementById('stop');
 const progress = document.getElementById('progress');
 const timestamp = document.getElementById('timestamp');
+const mute = document.getElementById('mute');
+const unmute = document.getElementById('unmute');
 
 // Play & pause video
 function toggleVideoStatus() {
@@ -25,11 +25,19 @@ function updatePlayIcon() {
     }
 }
 
-// Update progress & timestamp
+// Update mute/unmute icon
+function updateMuteIcon() {
+    console.log("update mute icon clicked");
+    // if muted
+    // show mute icon
+    // if unmuted 
+    // show unmuted icon
+}
 
+// Update Progress & Timestamp
 function updateProgress() {
-    console.log(video.currentTime);
-    console.log(video.duration);
+    console.log("current time: " + video.currentTime);
+    console.log("video duration: " + video.duration);
     progress.value = (video.currentTime / video.duration) * 100;
 
     // Get minutes 
@@ -45,8 +53,6 @@ function updateProgress() {
     }
 
     timestamp.innerHTML = `${mins}:${secs}`
-
-
 }
 
 // Time progress
@@ -60,15 +66,40 @@ function stopVideo() {
     video.pause();
 }
 
-// Event listeners
+// Unmute Video
+function unmuteVideo() {
+    console.log("unmute video")
+    video.muted = false;
+}
+
+// Mute Video
+function muteVideo() {
+    console.log("mute video")
+    video.muted = true;
+}
+
+// Event listener
+
+// Video Status
 video.addEventListener('click', toggleVideoStatus);
+
+// Play/Pause Icon
 video.addEventListener('pause', updatePlayIcon);
 video.addEventListener('play', updatePlayIcon);
+
+// Mute/Unmute Icon
+mute.addEventListener('click', updateMuteIcon);
+
+// Mute/Unmute 
+unmute.addEventListener('click', unmuteVideo);
+mute.addEventListener('click', muteVideo);
+
+// Update Time
 video.addEventListener('timeupdate', updateProgress);
 
+// Play/Stop Video
 play.addEventListener('click', toggleVideoStatus);
-
 stop.addEventListener('click', stopVideo);
 
+// Video Progress
 progress.addEventListener('change', setVideoProgress);
-

@@ -14,13 +14,19 @@
 
 <body>
     <h1>Video Player</h1>
-    <video src="videos/videoplayback.mp4" id="video" class="screen" poster="img/poster.png"></video>
+    <video src="videos/videoplayback.mp4" id="video" class="screen" poster="img/poster.png" muted></video>
     <div class="controls">
         <button class="btn" id="play">
             <i class="fa fa-play fa-2x"></i>
         </button>
         <button class="btn" id="stop">
             <i class="fa fa-stop fa-2x"></i>
+        </button>
+        <button class="btn" id="mute">
+            <i class="fa fa-volume-off fa-2x"></i>
+        </button>
+        <button class="btn" id="unmute">
+            <div class="fa fa-volume-up fa-2x"></div>
         </button>
         <input type="range" id="progress" class="progress" min="0" max="100" step="0.1" value="0">
         <span class="timestamp" id="timestamp">00.00</span>
